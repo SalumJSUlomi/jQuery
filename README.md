@@ -285,3 +285,29 @@ Example
   <script src="my_jquery_functions.js"></script>
 </head>
 ```
+
+# jQuery Event Methods
+
+jQuery is tailor-made to respond to events in an HTML page.
+
+## What are Events?
+
+All the different visitors' actions that a web page can respond to are called events.
+
+An event represents the precise moment when something happens.
+
+Examples:
+
+- moving a mouse over an element
+- selecting a radio button
+- clicking on an element
+
+The term **"fires/fired**" is often used with events. Example: "The keypress event is fired, the moment you press a key".
+
+Here are some common DOM events:
+|Mouse Events|Keyboard Event|Form Events|Document/Window Events|
+| ------------- |:-------------:| :------:|-----:|
+| click | keypress| submit |load|
+|dblclick | keydown |change |resize|
+| mouseenter |keyup | focus |scroll|
+|mouseleave||blur|unload|
