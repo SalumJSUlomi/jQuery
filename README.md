@@ -466,3 +466,86 @@ $('input').blur(function() {
   $(this).css('background-color', '#ffffff');
 });
 ```
+
+## The on() Method
+
+The `on()` method attaches one or more event handlers for the selected elements.
+
+Attach a click event to a `<p>` element:
+
+```javascript
+$('p').on('click', function() {
+  $(this).hide();
+});
+```
+
+Attach multiple event handlers to a `<p>` element:
+
+```javascript
+$('p').on({
+  mouseenter: function() {
+    $(this).css('background-color', 'lightgray');
+  },
+  mouseleave: function() {
+    $(this).css('background-color', 'lightblue');
+  },
+  click: function() {
+    $(this).css('background-color', 'yellow');
+  }
+});
+```
+
+# jQuery Effects - Hide and Show
+
+Hide, Show, Toggle, Slide, Fade, and Animate. WOW!
+
+## jQuery hide() and show()
+
+With jQuery, you can hide and show HTML elements with the `hide()` and `show()` methods:
+
+Example
+
+```javascript
+$('#hide').click(function() {
+  $('p').hide();
+});
+
+$('#show').click(function() {
+  $('p').show();
+});
+```
+
+### Syntax:
+
+```javascript
+$(selector).hide(speed, callback);
+$(selector).show(speed, callback);
+```
+
+The optional speed parameter specifies the speed of the hiding/showing, and can take the following values: "slow", "fast", or milliseconds.
+
+The optional callback parameter is a function to be executed after the hide() or show() method completes (you will learn more about callback functions in a later chapter).
+
+The following example demonstrates the speed parameter with `hide()`:
+
+Example
+
+```javascript
+$('button').click(function() {
+  $('p').hide(1000);
+});
+```
+
+## jQuery toggle()
+
+You can also toggle between hiding and showing an element with the `toggle()` method.
+
+Shown elements are hidden and hidden elements are shown:
+
+Example
+
+```javascript
+$('button').click(function() {
+  $('p').toggle();
+});
+```
