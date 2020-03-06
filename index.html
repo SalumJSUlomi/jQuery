@@ -11,12 +11,24 @@
 
     <p>This is a paragraph.</p>
     <p>This is another paragraph.</p>
-
+    <form action="">
+      <input type="text" />
+      <input type="button" value="Button" />
+    </form>
     <button>Click me to hide paragraphs</button>
     <script>
-      $(document).ready(() => {
-        $('button').click(() => {
-          $('p').hide();
+      $(document).ready(function() {
+        $('h2').on({
+          mouseenter: function() {
+            $(this).css('background-color', 'lightblue');
+          },
+          mouseleave: function() {
+            $(this).css('background-color', 'red');
+          },
+          click: function() {
+            $(this).css('background-color', 'black');
+            $(this).css('color', 'white');
+          }
         });
       });
     </script>
