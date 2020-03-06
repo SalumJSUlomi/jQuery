@@ -18,17 +18,8 @@
     <button>Click me to hide paragraphs</button>
     <script>
       $(document).ready(function() {
-        $('h2').on({
-          mouseenter: function() {
-            $(this).css('background-color', 'lightblue');
-          },
-          mouseleave: function() {
-            $(this).css('background-color', 'red');
-          },
-          click: function() {
-            $(this).css('background-color', 'black');
-            $(this).css('color', 'white');
-          }
+        $('button').on('click', function() {
+          $('p').fadeTo(3000, 0.1);
         });
       });
     </script>
