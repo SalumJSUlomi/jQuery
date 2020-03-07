@@ -16,10 +16,16 @@
       <input type="button" value="Button" />
     </form>
     <button>Click me to hide paragraphs</button>
+    <div
+      style="background:#98bf21;height:100px;width:100px;position:absolute;"
+    ></div>
     <script>
       $(document).ready(function() {
-        $('button').on('click', function() {
-          $('p').fadeTo(3000, 0.1);
+        $('button').click(function() {
+          $('p')
+            .css('color', 'red')
+            .slideUp(2000)
+            .slideDown(2000);
         });
       });
     </script>
