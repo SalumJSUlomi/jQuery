@@ -1221,3 +1221,88 @@ function appendText() {
   $('body').append(txt1, txt2, txt3); // Append the new elements
 }
 ```
+
+## jQuery after() and before() Methods
+
+The jQuery `after()` method inserts content AFTER the selected HTML elements.
+
+The jQuery `before()` method inserts content BEFORE the selected HTML elements.
+
+Example
+
+```javascript
+$('img').after('Some text after');
+
+$('img').before('Some text before');
+```
+
+## Add Several New Elements With after() and before()
+
+Also, both the `after()` and `before()` methods can take an infinite number of new elements as parameters. The new elements can be generated with text/HTML (like we have done in the example above), with jQuery, or with JavaScript code and DOM elements.
+
+In the following example, we create several new elements. The elements are created with text/HTML, jQuery, and JavaScript/DOM. Then we insert the new elements to the text with the `after()` method (this would have worked for `before()` too) :
+
+Example
+
+```javascript
+function afterText() {
+  var txt1 = '<b>I </b>'; // Create element with HTML
+  var txt2 = $('<i></i>').text('love '); // Create with jQuery
+  var txt3 = document.createElement('b'); // Create with DOM
+  txt3.innerHTML = 'jQuery!';
+  $('img').after(txt1, txt2, txt3); // Insert new elements after <img>
+}
+```
+
+# jQuery - Remove Elements
+
+With jQuery, it is easy to remove existing HTML elements.
+
+## Remove Elements/Content
+
+To remove elements and content, there are mainly two jQuery methods:
+
+- `remove()`- Removes the selected element (and its child elements)
+- `empty()`- Removes the child elements from the selected element
+
+## jQuery remove() Method
+
+The jQuery `remove()` method removes the selected element(s) and its child elements.
+
+Example
+
+```javascript
+$('#div1').remove();
+```
+
+## jQuery empty() Method
+
+The jQuery `empty()` method removes the child elements of the selected element(s).
+
+Example
+
+```javascript
+$('#div1').empty();
+```
+
+## Filter the Elements to be Removed
+
+The jQuery `remove()` method also accepts one parameter, which allows you to filter the elements to be removed.
+
+The parameter can be any of the jQuery selector syntaxes.
+
+The following example removes all `<p>` elements with `class="test"`:
+
+Example
+
+```javascript
+$('p').remove('.test');
+```
+
+This example removes all `<p>` elements with `class="test"`or `class="demo"`:
+
+Example
+
+```javascript
+$('p').remove('.test, .demo');
+```
