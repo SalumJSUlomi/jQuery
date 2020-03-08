@@ -10,22 +10,21 @@
     <h2>This is a heading</h2>
 
     <p>This is a paragraph.</p>
-    <p>This is another paragraph.</p>
+    <p id="p1">This is another paragraph.</p>
     <form action="">
-      <input type="text" />
-      <input type="button" value="Button" />
+      <input type="text" value="Salum Jabir" />
     </form>
+    <a href="helloworld.com">salum</a>
     <button>Click me to hide paragraphs</button>
     <div
       style="background:#98bf21;height:100px;width:100px;position:absolute;"
     ></div>
     <script>
       $(document).ready(function() {
-        $('button').click(function() {
-          $('p')
-            .css('color', 'red')
-            .slideUp(2000)
-            .slideDown(2000);
+        $('button').click(() => {
+          $('a').attr('href', (i, origValue) => {
+            return origValue + '/jquery/';
+          });
         });
       });
     </script>

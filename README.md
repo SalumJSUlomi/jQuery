@@ -684,3 +684,540 @@ $('button').click(function() {
   $('#div3').fadeTo('slow', 0.7);
 });
 ```
+
+# jQuery Effects - Sliding
+
+The jQuery slide methods slide elements up and down.
+
+## jQuery Sliding Methods
+
+With jQuery you can create a sliding effect on elements.
+
+jQuery has the following slide methods:
+
+- `slideDown()`
+- `slideUp()`
+- `slideToggle()`
+
+## jQuery slideDown() Method
+
+The jQuery slideDown() method is used to slide down an element.
+
+### Syntax
+
+```javascript
+$(selector).slideDown(speed, callback);
+```
+
+The optional speed parameter specifies the duration of the effect. It can take the following values: "slow", "fast", or milliseconds.
+
+The optional callback parameter is a function to be executed after the sliding completes.
+
+The following example demonstrates the `slideDown()` method:
+
+Example
+
+```javascript
+$('#flip').click(function() {
+  $('panel').slideDown();
+});
+```
+
+## jQuery slideUp() Method
+
+The jQuery `slideUp()` method is used to slide up an element
+
+### Syntax
+
+```javascript
+$(selector).slideUp(speed, callback);
+```
+
+The optional speed parameter specifies the duration of the effect. It can take the following values: "slow", "fast", or milliseconds.
+
+The optional callback parameter is a function to be executed after the sliding completes.
+
+The following example demonstrates the `slideUp()` method:
+
+Example
+
+```javascript
+$('#flip').click(function() {
+  $('#panel').slideUp();
+});
+```
+
+## jQuery slideToggle() Method
+
+The jQuery `slideToggle()` method toggles between the `slideDown()` and `slideUp()` methods.
+
+If the elements have been slid down, `slideToggle()` will slide them up.
+
+If the elements have been slid up, `slideToggle()` will slide them down.
+
+```javascript
+$(selector).slideToggle(speed, callback);
+```
+
+The optional speed parameter can take the following values: "slow", "fast", milliseconds.
+
+The optional callback parameter is a function to be executed after the sliding completes.
+
+The following example demonstrates the `slideToggle()` method:
+
+Example
+
+```javascript
+$('#flip').click(function() {
+  $('panel').slideToggle();
+});
+```
+
+# jQuery Effects - Animation
+
+With jQuery, you can create custom animations.
+
+## jQuery Animations - The animate() Method
+
+The jQuery `animate()` method is used to create custom animations.
+
+### Syntax
+
+```javascript
+$(selector).animate({ params }, speed, callback);
+```
+
+The required params parameter defines the CSS properties to be animated.
+
+The optional speed parameter specifies the duration of the effect. It can take the following values: "slow", "fast", or milliseconds.
+
+The optional callback parameter is a function to be executed after the animation completes.
+
+The following example demonstrates a simple use of the `animate()` method; it moves a `<div>` element to the right, until it has reached a left property of 250px:
+
+Example
+
+```javascript
+$('button').click(function() {
+  $('div').animate({ left: '250px' });
+});
+```
+
+Notice:
+
+By default, all HTML elements have a static position, and cannot be moved.
+
+To manipulate the position, remember to first set the CSS position property of the element to relative, fixed, or absolute!
+
+## jQuery animate() - Manipulate Multiple Properties
+
+Notice that multiple properties can be animated at the same time:
+
+Example
+
+```javascript
+$('button').click(function() {
+  $('div').animate({
+    left: '250px',
+    opacity: '0.2',
+    height: '150px',
+    width: '150px'
+  });
+});
+```
+
+### Is it possible to manipulate ALL CSS properties with the animate() method?
+
+Yes, almost! However, there is one important thing to remember: all property names must be camel-cased when used with the animate() method: You will need to write paddingLeft instead of padding-left, marginRight instead of margin-right, and so on.
+
+Also, color animation is not included in the core jQuery library.
+
+If you want to animate color, you need to download the Color Animations plugin from jQuery.com.
+
+## jQuery animate() - Using Relative Values
+
+It is also possible to define relative values (the value is then relative to the element's current value). This is done by putting += or -= in front of the value:
+
+Example
+
+```javascript
+$('button').click(function() {
+  $('div').animate({
+    left: '250px',
+    height: '+=150px',
+    width: '+=150px'
+  });
+});
+```
+
+## jQuery animate() - Using Pre-defined Values
+
+You can even specify a property's animation value as "show", "hide", or "toggle":
+
+Example
+
+```javascript
+$('button').click(function() {
+  $('div').animate({
+    height: 'toggle'
+  });
+});
+```
+
+## jQuery animate() - Uses Queue Functionality
+
+By default, jQuery comes with queue functionality for animations.
+
+This means that if you write multiple `animate()` calls after each other, jQuery creates an "internal" queue with these method calls. Then it runs the animate calls ONE by ONE.
+
+So, if you want to perform different animations after each other, we take advantage of the queue functionality:
+
+Example 1
+
+```javascript
+$('button').click(function() {
+  var div = $('div');
+  div.animate({ height: '300px', opacity: '0.4' }, 'slow');
+  div.animate({ width: '300px', opacity: '0.8' }, 'slow');
+  div.animate({ height: '100px', opacity: '0.4' }, 'slow');
+  div.animate({ width: '100px', opacity: '0.8' }, 'slow');
+});
+```
+
+The example below first moves the `<div>` element to the right, and then increases the font size of the text:
+
+Example 2
+
+```javascript
+$('button').click(function() {
+  var div = $('div');
+  div.animate({ left: '100px' }, 'slow');
+  div.animate({ fontSize: '3em' }, 'slow');
+});
+```
+
+# jQuery Stop Animations
+
+The jQuery `stop()` method is used to stop animations or effects before it is finished.
+
+## jQuery stop() Method
+
+The jQuery `stop()` method is used to stop an animation or effect before it is finished.
+
+The `stop()` method works for all jQuery effect functions, including sliding, fading and custom animations.
+
+### Syntax:
+
+```javascript
+$(selector).stop(stopAll, goToEnd);
+```
+
+The optional stopAll parameter specifies whether also the animation queue should be cleared or not. Default is false, which means that only the active animation will be stopped, allowing any queued animations to be performed afterwards.
+
+The optional goToEnd parameter specifies whether or not to complete the current animation immediately. Default is false.
+
+So, by default, the `stop()` method kills the current animation being performed on the selected element.
+
+The following example demonstrates the `stop()` method, with no parameters:
+
+Example
+
+```javascript
+$('#stop').click(function() {
+  $('#panel').stop();
+});
+```
+
+# jQuery Callback Functions
+
+A callback function is executed after the current effect is 100% finished.
+
+## jQuery Callback Functions
+
+JavaScript statements are executed line by line. However, with effects, the next line of code can be run even though the effect is not finished. This can create errors.
+
+To prevent this, you can create a callback function.
+
+A callback function is executed after the current effect is finished.
+
+Typical syntax: **\$(selector).hide(speed,callback);**
+
+Example
+
+The example below has a callback parameter that is a function that will be executed after the hide effect is completed:
+
+### Example with Callback
+
+```javascript
+$('button').click(function() {
+  $('p').hide('slow', function() {
+    alert('The paragraph is now hidden');
+  });
+});
+```
+
+The example below has no callback parameter, and the alert box will be displayed before the hide effect is completed:
+
+### Example without Callback
+
+```javascript
+$('button').click(function() {
+  $('p').hide(1000);
+  alert('The paragraph is now hidden');
+});
+```
+
+# jQuery - Chaining
+
+With jQuery, you can chain together actions/methods.
+
+Chaining allows us to run multiple jQuery methods (on the same element) within a single statement.
+
+## jQuery Method Chaining
+
+Until now we have been writing jQuery statements one at a time (one after the other).
+
+However, there is a technique called chaining, that allows us to run multiple jQuery commands, one after the other, on the same element(s).
+
+**Tip:** This way, browsers do not have to find the same element(s) more than once.
+
+To chain an action, you simply append the action to the previous action.
+
+The following example chains together the `css()`, `slideUp()`, and `slideDown()` methods. The "p1" element first changes to red, then it slides up, and then it slides down:
+
+Example
+
+```javascript
+$('#p1')
+  .css('color', 'red')
+  .slideUp(2000)
+  .slideDown(2000);
+```
+
+We could also have added more method calls if needed.
+
+**Tip:** When chaining, the line of code could become quite long. However, jQuery is not very strict on the syntax; you can format it like you want, including line breaks and indentations.
+
+This also works just fine:
+
+Example
+
+```javascript
+$('#p1')
+  .css('color', 'red')
+  .slideUp(2000)
+  .slideDown(2000);
+```
+
+jQuery throws away extra whitespace and executes the lines above as one long line of code.
+
+# jQuery - Get Content and Attributes
+
+jQuery contains powerful methods for changing and manipulating HTML elements and attributes.
+
+## jQuery DOM Manipulation
+
+One very important part of jQuery is the possibility to manipulate the DOM.
+
+jQuery comes with a bunch of DOM related methods that make it easy to access and manipulate elements and attributes.
+
+**DOM = Document Object Model**
+
+The DOM defines a standard for accessing HTML and XML documents:
+
+_"The W3C Document Object Model (DOM) is a platform and language-neutral interface that allows programs and scripts to dynamically access and update the content, structure, and style of a document."_
+
+## Get Content - text(), html(), and val()
+
+Three simple, but useful, jQuery methods for DOM manipulation are:
+
+- `text()` - Sets or returns the text content of selected elements
+- `html()` - Sets or returns the content of selected elements (including HTML markup)
+- `val()` - Sets or returns the value of form fields
+
+The following example demonstrates how to get content with the jQuery `text()` and `html()` methods:
+
+Example
+
+```javascript
+$('#btn1').click(function() {
+  alert('Text: ' + $('#test').text());
+});
+$('#btn2').click(function() {
+  alert('HTML: ' + $('#test').html());
+});
+```
+
+The following example demonstrates how to get the value of an input field with the jQuery `val()` method:
+
+Example
+
+```javascript
+$('#btn1').click(function() {
+  alert('Value: ' + $('#test').val());
+});
+```
+
+## Get Attributes - attr()
+
+The jQuery `attr()` method is used to get attribute values.
+
+The following example demonstrates how to get the value of the href attribute in a link:
+
+Example
+
+```javascript
+$('button').click(function() {
+  alert($('#p1').attr('href'));
+});
+```
+
+The next chapter explains how to set (change) content and attribute values.
+
+# jQuery - Set Content and Attributes
+
+## Set Content - text(), html(), and val()
+
+We will use the same three methods from the previous page to **set content:**
+
+- `text()`- Sets or returns the text content of selected elements
+- `html()`- Sets or returns the content of selected elements (including HTML markup)
+- `val()`- Sets or returns the value of form fields
+
+The following example demonstrates how to set content with the jQuery `text()`,`html(`), and `val()` methods:
+
+Example
+
+```javascript
+$('#btn1').click(function() {
+  $('#test1').text('Hello world!');
+});
+$('#btn2').click(function() {
+  $('#test2').html('<b>Hello world!</b>');
+});
+$('#btn3').click(function() {
+  $('#test3').val('Dolly Duck');
+});
+```
+
+## A Callback Function for text(), html(), and val()
+
+All of the three jQuery methods above: `text()`, `html()`, and `val()`, also come with a callback function. The callback function has two parameters: the index of the current element in the list of elements selected and the original (old) value. You then return the string you wish to use as the new value from the function.
+
+The following example demonstrates `text()` and `html()` with a callback function:
+
+Example
+
+```javascript
+$("#btn1").click(function(){
+  $("#test1").text(function(i, origText){
+    return "Old text: " + origText + " New text: Hello world!
+    (index: " + i + ")";
+  });
+});
+
+$("#btn2").click(function(){
+  $("#test2").html(function(i, origText){
+    return "Old html: " + origText + " New html: Hello <b>world!</b>
+    (index: " + i + ")";
+  });
+});
+```
+
+## Set Attributes - attr()
+
+The jQuery `attr()` method is also used to set/change attribute values.
+
+The following example demonstrates how to change (set) the value of the href attribute in a link:
+
+Example
+
+```javascript
+$('button').click(function() {
+  $('#w3s').attr('href', 'https://www.w3schools.com/jquery/');
+});
+```
+
+The `attr()` method also allows you to set multiple attributes at the same time.
+
+The following example demonstrates how to set both the href and title attributes at the same time:
+
+Example
+
+```javascript
+$('button').click(function() {
+  $('#w3s').attr({
+    href: 'https://www.w3schools.com/jquery/',
+    title: 'W3Schools jQuery Tutorial'
+  });
+});
+```
+
+## A Callback Function for attr()
+
+The jQuery method `attr()`, also comes with a callback function. The callback function has two parameters: the index of the current element in the list of elements selected and the original (old) attribute value. You then return the string you wish to use as the new attribute value from the function.
+
+The following example demonstrates `attr()`with a callback function:
+
+Example
+
+```javascript
+$('button').click(function() {
+  $('#w3s').attr('href', function(i, origValue) {
+    return origValue + '/jquery/';
+  });
+});
+```
+
+# jQuery - Add Elements
+
+With jQuery, it is easy to add new elements/content.
+
+## Add New HTML Content
+
+We will look at four jQuery methods that are used to add new content:
+
+- `append()` - Inserts content at the end of the selected elements
+- `prepend()`- Inserts content at the beginning of the selected elements
+- `after`- Inserts content after the selected elements
+- `before`- Inserts content before the selected elements
+
+## jQuery append() Method
+
+The jQuery `append()` method inserts content AT THE END of the selected HTML elements.
+
+Example
+
+```javascript
+$('p').append('Some appended text.');
+```
+
+## jQuery prepend() Method
+
+The jQuery `prepend()` method inserts content AT THE BEGINNING of the selected HTML elements.
+
+Example
+
+```javascript
+$('p').prepend('Some prepended text.');
+```
+
+## Add Several New Elements With append() and prepend()
+
+In both examples above, we have only inserted some text/HTML at the beginning/end of the selected HTML elements.
+
+However, both the `append()` and `prepend()` methods can take an infinite number of new elements as parameters. The new elements can be generated with text/HTML (like we have done in the examples above), with jQuery, or with JavaScript code and DOM elements.
+
+In the following example, we create several new elements. The elements are created with text/HTML, jQuery, and JavaScript/DOM. Then we append the new elements to the text with the `append()` method (this would have worked for `prepend()` too) :
+
+Example
+
+```javascript
+function appendText() {
+  var txt1 = '<p>Text.</p>'; // Create element with HTML
+  var txt2 = $('<p></p>').text('Text.'); // Create with jQuery
+  var txt3 = document.createElement('p'); // Create with DOM
+  txt3.innerHTML = 'Text.';
+  $('body').append(txt1, txt2, txt3); // Append the new elements
+}
+```
