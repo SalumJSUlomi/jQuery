@@ -1444,5 +1444,6 @@ jQuery has several important methods for working with dimensions:
 - `innerHeight()`
 - `outerWidth()`
 - `outerHeight()`
+## jQuery Dimensions
+  ![alt text](img_jquerydim.gif 'jQuery Dimensions')
 
-  ![alt text](img_jquerydim.gif 'Logo Title Text 1')
