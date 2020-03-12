@@ -2152,4 +2152,4 @@ $(document).ready(function(){
 
 ## PROJECTS
 
-[filterable.com](https://salumjsulomi.github.io/jQuery/)
+[filterable Table](https://salumjsulomi.github.io/jQuery/)
