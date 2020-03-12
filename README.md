@@ -78,7 +78,7 @@ There are two versions of jQuery available for downloading:
 - Production version - this is for your live website because it has been minified and compressed
 - Development version - this is for testing and development (uncompressed and readable code)
 
-Both versions can be downloaded from jQuery.com.
+Both versions can be downloaded from [jQuery.com](https://jquery.com/download/).
 
 The jQuery library is a single JavaScript file, and you reference it with the HTML `<script>` tag (notice that the `<script>` tag should be inside the `<head>` section):
 
