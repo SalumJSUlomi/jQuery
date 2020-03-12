@@ -3,35 +3,48 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>JQUERY</title>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <title>jQuery Filter</title>
+    <link rel="stylesheet" href="style.css" />
   </head>
   <body>
-    <h2>This is a heading</h2>
-
-    <p>This is a paragraph.</p>
-    <p id="p1">This is another paragraph.</p>
-    <form action="">
-      <input type="text" value="Salum Jabir" />
-    </form>
-    <a href="helloworld.com">salum</a>
-    <button>Change the P tag</button>
-    <div
-      style="background:#98bf21;height:100px;width:100px;position:absolute;"
-    ></div>
-    <script>
-      $(document).ready(() => {
-        $('button').click(() => {
-          $('#p1').load('demo.txt', (responseTxt, statusTxt, xhr) => {
-            if (statusTxt == 'success') {
-              alert('Loaded Successfully...');
-            }
-            if (statusTxt == 'error') {
-              alert('Error: ' + xhr.status + ': ' + xhr.statusText);
-            }
-          });
-        });
-      });
-    </script>
+    <h2>Filterable Table</h2>
+    <p>
+      Type Something to Filter What You Want From The Table
+    </p>
+    <input id="myInput" type="text" placeholder="Search.." />
+    <br /><br />
+    <table>
+      <thead>
+        <tr>
+          <th>Firstname</th>
+          <th>Lastname</th>
+          <th>Email</th>
+        </tr>
+      </thead>
+      <tbody id="myTable">
+        <tr>
+          <td>John</td>
+          <td>Doe</td>
+          <td>john@example.com</td>
+        </tr>
+        <tr>
+          <td>Mary</td>
+          <td>Moe</td>
+          <td>mary@mail.com</td>
+        </tr>
+        <tr>
+          <td>July</td>
+          <td>Dooley</td>
+          <td>july@greatstuff.com</td>
+        </tr>
+        <tr>
+          <td>Anja</td>
+          <td>Ravendale</td>
+          <td>a_r@test.com</td>
+        </tr>
+      </tbody>
+    </table>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="script.js"></script>
   </body>
 </html>
