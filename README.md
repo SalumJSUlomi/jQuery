@@ -68,7 +68,7 @@ The jQuery team knows all about cross-browser issues, and they have written this
 
 There are several ways to start using jQuery on your web site. You can:
 
-- Download the jQuery library from jQuery.com
+- Download the jQuery library from (jQuery.com)
 - Include jQuery from a CDN, like Google
 
 ## Downloading jQuery
