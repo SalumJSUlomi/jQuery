@@ -1,4 +1,4 @@
-# jQuery Tutorial
+# jQuery Documentation
 
 jQuery is a JavaScript Library.
 
