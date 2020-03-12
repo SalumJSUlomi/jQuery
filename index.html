@@ -15,15 +15,20 @@
       <input type="text" value="Salum Jabir" />
     </form>
     <a href="helloworld.com">salum</a>
-    <button>Click me to hide paragraphs</button>
+    <button>Change the P tag</button>
     <div
       style="background:#98bf21;height:100px;width:100px;position:absolute;"
     ></div>
     <script>
-      $(document).ready(function() {
+      $(document).ready(() => {
         $('button').click(() => {
-          $('a').attr('href', (i, origValue) => {
-            return origValue + '/jquery/';
+          $('#p1').load('demo.txt', (responseTxt, statusTxt, xhr) => {
+            if (statusTxt == 'success') {
+              alert('Loaded Successfully...');
+            }
+            if (statusTxt == 'error') {
+              alert('Error: ' + xhr.status + ': ' + xhr.statusText);
+            }
           });
         });
       });

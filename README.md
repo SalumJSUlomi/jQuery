@@ -1561,3 +1561,591 @@ The image below illustrates an HTML page as a tree (DOM tree). With jQuery trave
 ![traversing](img_travtree.png 'jQuery traversing')
 
 **Illustration explained:**
+
+- The `<div>` element is the parent of `<ul>`, and an ancestor of everything inside of it
+
+- The `<ul>` element is the parent of both `<li>` elements, and a child of `<div>`
+
+- The left `<li>` element is the parent of `<span>`, child of `<ul>` and a descendant of `<div>`
+
+- The `<span>` element is a child of the left `<li>` and a descendant of `<ul>` and `<div>`
+
+- The two `<li>` elements are siblings (they share the same parent)
+
+- The right `<li>` element is the parent of `<b>`, child of `<ul>` and a descendant of `<div>`
+
+- The `<b>` element is a child of the right `<li>` and a descendant of `<ul>` and `<div>`
+
+An ancestor is a parent, grandparent, great-grandparent, and so on.
+A descendant is a child, grandchild, great-grandchild, and so on.
+Siblings share the same parent.
+
+## Traversing the DOM
+
+jQuery provides a variety of methods that allow us to traverse the DOM.
+
+The largest category of traversal methods are tree-traversal.
+
+The next chapters will show us how to travel up, down and sideways in the DOM tree.
+
+# jQuery Traversing - Ancestors
+
+With jQuery you can traverse up the DOM tree to find ancestors of an element.
+
+An ancestor is a parent, grandparent, great-grandparent, and so on.
+
+## Traversing Up the DOM Tree
+
+Three useful jQuery methods for traversing up the DOM tree are:
+
+- `parent()`
+- `parents()`
+- `parentsUntil()`
+
+## jQuery parent() Method
+
+The `parent()` method returns the direct parent element of the selected element.
+
+This method only traverse a single level up the DOM tree.
+
+The following example returns the direct parent element of each `<span>` elements:
+
+```javascript
+$(document).ready(function() {
+  $('span').parent();
+});
+```
+
+## jQuery parents() Method
+
+The `parents()` method returns all ancestor elements of the selected element, all the way up to the document's root element `(<html>)`.
+
+The following example returns all ancestors of all `<span>` elements:
+
+```javascript
+$(document).ready(function() {
+  $('span').parents();
+});
+```
+
+You can also use an optional parameter to filter the search for ancestors.
+
+The following example returns all ancestors of all `<span>` elements that are `<ul>` elements:
+
+```javascript
+$(document).ready(function() {
+  $('span').parents('ul');
+});
+```
+
+## jQuery parentsUntil() Method
+
+The `parentsUntil()` method returns all ancestor elements between two given arguments.
+
+The following example returns all ancestor elements between a `<span>` and a `<div>` element:
+
+```javascript
+$(document).ready(() => {
+  $('span').parentsUntil('div');
+});
+```
+
+# jQuery Traversing - Descendants
+
+With jQuery you can traverse down the DOM tree to find descendants of an element.
+
+A descendant is a child, grandchild, great-grandchild, and so on.
+
+## Traversing Down the DOM Tree
+
+Two useful jQuery methods for traversing down the DOM tree are:
+
+- `children()`
+- `find()`
+
+## jQuery children() Method
+
+The `children()` method returns all direct children of the selected element.
+
+This method only traverses a single level down the DOM tree.
+
+The following example returns all elements that are direct children of each `<div>`elements:
+
+```javascript
+$(document).ready(function() {
+  $('div').children();
+});
+```
+
+You can also use an optional parameter to filter the search for children.
+
+The following example returns all `<p>` elements with the class name "first", that are direct children of `<div>`:
+
+```javascript
+$(document).ready(function() {
+  $('div').children('p.first');
+});
+```
+
+## jQuery find() Method
+
+The `find()` method returns descendant elements of the selected element, all the way down to the last descendant.
+
+The following example returns all `<span>` elements that are descendants of `<div>`:
+
+```javascript
+$(document).ready(function() {
+  $('div').find('span');
+});
+```
+
+The following example returns all descendants of `<div>`:
+
+```javascript
+$(document).ready(function() {
+  $('div').find('*');
+});
+```
+
+# jQuery Traversing - Siblings
+
+With jQuery you can traverse sideways in the DOM tree to find siblings of an element.
+
+Siblings share the same parent.
+
+## Traversing Sideways in The DOM Tree
+
+There are many useful jQuery methods for traversing sideways in the DOM tree:
+
+- `siblings()`
+- `next()`
+- `nextAll()`
+- `nextUntil()`
+- `prev()`
+- `prevAll()`
+- `prevUntil()`
+
+## jQuery siblings() Method
+
+The `siblings()` method returns all sibling elements of the selected element.
+
+The following example returns all sibling elements of `<h2>`:
+
+```javascript
+$(document).ready(function() {
+  $('h2').siblings();
+});
+```
+
+You can also use an optional parameter to filter the search for siblings.
+
+The following example returns all sibling elements of `<h2>` that are `<p>` elements:
+
+```javascript
+$(document).ready(function() {
+  $('h2').siblings('p');
+});
+```
+
+## jQuery next() Method
+
+The `next()` method returns the next sibling element of the selected element.
+
+```javascript
+$(document).ready(function() {
+  $('h2').next();
+});
+```
+
+## jQuery nextAll() Method
+
+The `nextAll()` method returns all next sibling elements of the selected element.
+The following example returns all next sibling elements of `<h2>`:
+
+```javascript
+$(document),
+  ready(() => {
+    $('h2').nextAll();
+  });
+```
+
+## jQuery nextUntil() Method
+
+The `nextUntil()` method returns all next sibling elements between two given arguments.
+
+The following example returns all sibling elements between a `<h2>` and a `<h6>` element:
+
+```javascript
+$(document).ready(() => {
+  $('h2').nextUntil('h6');
+});
+```
+
+## jQuery prev(), prevAll() & prevUntil() Methods
+
+The `prev()`, `prevAll()` and `prevUntil()` methods work just like the methods above but with reverse functionality: they return previous sibling elements (traverse backwards along sibling elements in the DOM tree, instead of forward).
+
+# jQuery Traversing - Filtering
+
+The most basic filtering methods are `first()`, `last()` and `eq()`, which allow you to select a specific element based on its position in a group of elements.
+
+Other filtering methods, like `filter()` and `not()` allow you to select elements that match, or do not match, a certain criteria.
+
+## jQuery first() Method
+
+The `first()` method returns the first element of the specified elements.
+
+The following example selects the first `<div>` element:
+
+```javascript
+$(document).ready(() => {
+  $('div').first();
+});
+```
+
+## jQuery last() Method
+
+The `last()` method returns the last element of the specified elements.
+
+The following example selects the last `<div>` element:
+
+```javascript
+$(document).ready(() => {
+  $('div').last();
+});
+```
+
+## jQuery eq() method
+
+The `eq()` method returns an element with a specific index number of the selected elements.
+
+The index numbers start at 0, so the first element will have the index number 0 and not 1. The following example selects the second `<p>` element (index number 1):
+
+```javascript
+$(document).ready(function() {
+  $('p').eq(1);
+});
+```
+
+## jQuery filter() Method
+
+The `filter()` method lets you specify a criteria. Elements that do not match the criteria are removed from the selection, and those that match will be returned.
+
+The following example returns all `<p>` elements with class name "intro":
+
+```javascript
+$(document).ready(() => {
+  $('p').filter('.intro');
+});
+```
+
+## jQuery not() Method
+
+The `not()` method returns all elements that do not match the criteria.
+
+**Tip:** The `not()` method is the opposite of `filter()`.
+
+The following example returns all `<p>` elements that do not have class name "intro":
+
+```javascript
+$(document).ready(() => {
+  $('p').not('.intro');
+});
+```
+
+# jQuery - AJAX Introduction
+
+AJAX is the art of exchanging data with a server, and updating parts of a web page - without reloading the whole page.
+
+## What is AJAX?
+
+AJAX = Asynchronous JavaScript and XML.
+In short; AJAX is about loading data in the background and display it on the webpage, without reloading the whole page.
+Examples of applications using AJAX: Gmail, Google Maps, Youtube, and Facebook tabs.
+
+## What About jQuery and AJAX?
+
+jQuery provides several methods for AJAX functionality.
+
+With the jQuery AJAX methods, you can request text, HTML, XML, or JSON from a remote server using both HTTP Get and HTTP Post - And you can load the external data directly into the selected HTML elements of your web page!
+
+### Without jQuery, AJAX coding can be a bit tricky!
+
+Writing regular AJAX code can be a bit tricky, because different browsers have different syntax for AJAX implementation. This means that you will have to write extra code to test for different browsers. However, the jQuery team has taken care of this for us, so that we can write AJAX functionality with only one single line of code.
+
+## jQuery AJAX Methods
+
+In the next chapters we will look at the most important jQuery AJAX methods.
+
+# jQuery - AJAX load() Method
+
+## jQuery load() Method
+
+The jQuery `load()` method is a simple, but powerful AJAX method.
+
+The `load()` method loads data from a server and puts the returned data into the selected element.
+**Syntax:**
+`$(selector).load(URL,data,callback);`
+
+The required URL parameter specifies the URL you wish to load.
+
+The optional data parameter specifies a set of querystring key/value pairs to send along with the request.
+
+The optional callback parameter is the name of a function to be executed after the `load()` method is completed.
+
+### Here is the content of our example file: "demo_test.txt":
+
+```html
+<h2>jQuery and AJAX is FUN!!!</h2>
+<p id="p1">This is some text in a paragraph.</p>
+```
+
+The following example loads the content of the file "demo_test.txt" into a specific `<div>` element:
+
+```javascript
+$('#div').load('demo_test.txt');
+```
+
+It is also possible to add a jQuery selector to the URL parameter.
+
+The following example loads the content of the element with id="p1", inside the file "demo_test.txt", into a specific `<div>` element:
+
+```javascript
+$('#div1').load('demo_test.txt #p1');
+```
+
+The optional callback parameter specifies a callback function to run when the `load()` method is completed. The callback function can have different parameters:
+
+- `responseTxt`- contains the resulting content if the call succeeds
+- `statusTxt` - contains the status of the call
+- `xhr`- contains the XMLHttpRequest object
+
+The following example displays an alert box after the `load()` method completes. If the `load()` method has succeeded, it displays "External content loaded successfully!", and if it fails it displays an error message:
+
+```javascript
+$('button').click(function() {
+  $('#div1').load('demo_test.txt', function(responseTxt, statusTxt, xhr) {
+    if (statusTxt == 'success') alert('External content loaded successfully!');
+    if (statusTxt == 'error')
+      alert('Error: ' + xhr.status + ': ' + xhr.statusText);
+  });
+});
+```
+
+# jQuery - AJAX get() and post() Methods
+
+The jQuery `get()` and `post()` methods are used to request data from the server with an HTTP GET or POST request.
+
+## HTTP Request: GET vs. POST
+
+Two commonly used methods for a request-response between a client and server are: GET and POST.
+
+- **GET** - Requests data from a specified resource
+- **POST**-Submits data to be processed to a specified resource
+
+GET is basically used for just getting (retrieving) some data from the server. **Note:** The GET method may return cached data.
+
+POST can also be used to get some data from the server. However, the POST method NEVER caches data, and is often used to send data along with the request.
+
+## jQuery \$.get() Method
+
+The `$.get()` method requests data from the server with an HTTP GET request.
+**Syntax:**
+
+```javascript
+$.get(URL, callback);
+```
+
+The required URL parameter specifies the URL you wish to request.
+
+The optional callback parameter is the name of a function to be executed if the request succeeds.
+
+The following example uses the `$.get()` method to retrieve data from a file on the server:
+
+```javascript
+$('button').click(function() {
+  $.get('demo_test.asp', function(data, status) {
+    alert('Data: ' + data + '\nStatus: ' + status);
+  });
+});
+```
+
+The first parameter of `$.get()` is the URL we wish to request ("demo_test.asp").
+
+The second parameter is a callback function. The first callback parameter holds the content of the page requested, and the second callback parameter holds the status of the request.
+
+**Tip:** Here is how the ASP file looks like ("demo_test.asp"):
+
+```
+<%
+response.write("This is some text from an external ASP file.")
+%>
+```
+
+## jQuery \$.post() Method
+
+The `$.post()` method requests data from the server using an HTTP POST request.
+
+**Syntax:**
+
+```javascript
+$.post(URL, data, callback);
+```
+
+The required URL parameter specifies the URL you wish to request.
+
+The optional data parameter specifies some data to send along with the request.
+
+The optional callback parameter is the name of a function to be executed if the request succeeds.
+
+The following example uses the `$.post()` method to send some data along with the request:
+
+```javascript
+$('button').click(function() {
+  $.post(
+    'demo_test_post.asp',
+    {
+      name: 'Donald Duck',
+      city: 'Duckburg'
+    },
+    function(data, status) {
+      alert('Data: ' + data + '\nStatus: ' + status);
+    }
+  );
+});
+```
+
+The first parameter of `$.post()` is the URL we wish to request ("demo_test_post.asp").
+
+Then we pass in some data to send along with the request (name and city).
+
+The ASP script in "demo_test_post.asp" reads the parameters, processes them, and returns a result.
+
+The third parameter is a callback function. The first callback parameter holds the content of the page requested, and the second callback parameter holds the status of the request.
+
+**Tip:** Here is how the ASP file looks like ("demo_test_post.asp"):
+
+```<%
+dim fname,city
+fname=Request.Form("name")
+city=Request.Form("city")
+Response.Write("Dear " & fname & ". ")
+Response.Write("Hope you live well in " & city & ".")
+%>
+```
+
+# jQuery - The noConflict() Method
+
+What if you wish to use other frameworks on your pages, while still using jQuery?
+
+## jQuery and Other JavaScript Frameworks
+
+As you already know; jQuery uses the \$ sign as a shortcut for jQuery.
+
+There are many other popular JavaScript frameworks like: Angular, Backbone, Ember, Knockout, and more.
+
+### What if other JavaScript frameworks also use the \$ sign as a shortcut?
+
+If two different frameworks are using the same shortcut, one of them might stop working.
+
+The jQuery team have already thought about this, and implemented the `noConflict()` method.
+
+## The jQuery noConflict() Method
+
+The `noConflict()` method releases the hold on the \$ shortcut identifier, so that other scripts can use it.
+
+You can of course still use jQuery, simply by writing the full name instead of the shortcut:
+
+```javascript
+$.noConflict();
+jQuery(document).ready(function() {
+  jQuery('button').click(function() {
+    jQuery('p').text('jQuery is still working!');
+  });
+});
+```
+
+You can also create your own shortcut very easily. The `noConflict()` method returns a reference to jQuery, that you can save in a variable, for later use. Here is an example:
+
+```javascript
+var jq = $.noConflict();
+jq(document).ready(function() {
+  jq('button').click(function() {
+    jq('p').text('jQuery is still working!');
+  });
+});
+```
+
+If you have a block of jQuery code which uses the $ shortcut and you do not want to change it all, you can pass the $ sign in as a parameter to the ready method. This allows you to access jQuery using \$, inside this function - outside of it, you will have to use "jQuery":
+
+```javascript
+$.noConflict();
+jQuery(document).ready(function($) {
+  $('button').click(function() {
+    $('p').text('jQuery is still working!');
+  });
+});
+```
+
+# jQuery - Filters
+
+## jQuery Filters
+
+Use jQuery to filter/search for specific elements.
+
+## Filter Tables
+
+Perform a case-insensitive search for items in a table:
+
+### Example
+
+### jQuery
+
+```javascript
+<script>
+$(document).ready(function(){
+  $("#myInput").on("keyup", function() {
+    var value = $(this).val().toLowerCase();
+    $("#myTable tr").filter(function() {
+      $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
+    });
+  });
+});
+</script>
+```
+
+**Example explained:** We use jQuery to loop through each table rows to check if there are any text values that matches the value of the input field. The `toggle()` method hides the row (`display:none`) that does not match the search. We use the `toLowerCase()` DOM method to convert the text to lower case, which makes the search case insensitive (allows "john", "John", and even "JOHN" on search).
+
+## Filter Lists
+
+Perform a case-insensitive search for items in a list:
+
+```javascript
+<script>
+$(document).ready(function(){
+  $("#myInput").on("keyup", function() {
+    var value = $(this).val().toLowerCase();
+    $("#myList li").filter(function() {
+      $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
+    });
+  });
+});
+</script>
+```
+
+## Filter Anything
+
+Perform a case-insensitive search for text inside a div element:
+
+```javascript
+<script>
+$(document).ready(function(){
+  $("#myInput").on("keyup", function() {
+    var value = $(this).val().toLowerCase();
+    $("#myDIV *").filter(function() {
+      $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
+    });
+  });
+});
+</script>
+```
